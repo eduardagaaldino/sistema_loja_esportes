@@ -57,7 +57,7 @@ def atualizar_funcionarios(id_funcionario, novo_nome_funcionario, novo_telefone_
             telefone_funcionario = '{novo_telefone_funcionario}',
             cpf_funcionario = '{novo_cpf_funcionario}',
             endereco_funcionario = '{novo_endereco_funcionario}'
-            id_diretor = '{novo_diretor_vinculado}
+            id_diretor = '{novo_diretor_vinculado}'
         WHERE id_funcionario = {id_funcionario}
         '''
 
@@ -136,7 +136,7 @@ def menu_funcionarios():
                 novo_telefone_funcionario = int(input("digite o novo telefone do funcionario:"))
                 novo_cpf_funcionario= int(input("digite o novo cpf do funcionario:"))
                 novo_endereco_funcionario = input("digite o novo endereco do funcionario:")
-                novo_diretor_vinculado = int(input("digite o novo funcionario vinculado:"))
+                novo_diretor_vinculado = int(input("digite o novo diretor vinculado:"))
                 banco = 'teste_loja.db'
                 atualizar_funcionarios(id_funcionario, novo_nome_funcionario, novo_telefone_funcionario, novo_cpf_funcionario, novo_endereco_funcionario, novo_diretor_vinculado, banco)
 
