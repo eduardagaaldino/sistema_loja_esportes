@@ -76,19 +76,22 @@ def tabela_clientes (banco):
         print(f"Erro no banco de dados!" , erro)
 
 
-def tabela_estoque (banco):
+def tabela_produtos (banco):
     try:
         conexao = sqlite3.connect(banco)
         cursor = conexao.cursor()
 
         cursor.execute ('''
-                        CREATE TABLE IF NOT EXISTS estoque(
+                        CREATE TABLE IF NOT EXISTS produtos(
                         id_produto INTEGER PRIMARY KEY AUTOINCREMENT,
-                        nome_produto TEXT NOT NULL
+                        nome_produto TEXT NOT NULL,
+                        marca_produto TEXT NOT NULL,
+                        preco_produto REAL NOT NULL,
+                        estoque INTEGER NOT NULL
                         )''')
 
         conexao.commit()
-        return"tabela estoque criada!"
+        return"produtos estoque criada!"
 
     except sqlite3.Error  as erro:
         print("Erro no banco de dados!" , erro)
@@ -98,7 +101,7 @@ banco = "teste_loja.db"
 mensagem1 = tabela_diretores(banco)
 mensagem2 = tabela_funcionarios(banco)
 mensagem3 = tabela_clientes(banco)
-mensagem4 = tabela_estoque(banco)
+mensagem4 = tabela_produtos(banco)
 
 print(mensagem1)
 print(mensagem2)
