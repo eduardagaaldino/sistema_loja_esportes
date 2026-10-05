@@ -160,27 +160,26 @@ def menu_produtos():
                 listar_produtos(banco)
             
             elif opcao == 3:
-                id_produto = int(input("Digite o ID do diretor que deseja alterar: "))
-                novo_nome_diretor = input("digite o novo nome do diretor:")
-                novo_telefone_diretor = int(input("digite o novo telefone do diretor:"))
-                novo_cpf_diretor = int(input("digite o novo cpf do diretor:"))
-                novo_endereco_diretor = input("digite o novo endereco do diretor:")
+                id_produto = int(input("Digite o ID do produto que produto alterar: "))
+                novo_nome_produto = input("digite o novo nome do produto:")
+                nova nova_marca_produto = int(input("digite a nova marca do produto:"))
+                novo_preco_produto = int(input("digite o novo preco do produto:"))
                 banco = 'teste_loja.db'
                 atualizar_produtos(id_produto, novo_nome_produto, nova_marca_produto, novo_preco_produto, banco)
 
             elif opcao == 4:
                 id_produto = int(input("Digite o ID do produto que deseja alterar o estoque: "))
-                novo_estoque = int(input("digite o novo valor de estoque: "))
+                novo_estoque = int(input("digite o novo estoque: "))
                 atualizar_estoque(id_produto, novo_estoque, banco)
 
             elif opcao == 4:
-                id_diretor = int(input("Digite o ID do diretor que deseja excluir: "))
+                id_produto = int(input("Digite o ID do produto que deseja excluir: "))
                 banco = 'teste_loja.db'
-                excluir_diretores(id_diretor , banco)
+                excluir_produto(id_produto, banco)
 
     except ValueError:
         print("Erro: digite apenas numeros!")
     finally:
         print("------------------------------------------------")
 
-menu_diretores()
+menu_produtos()
