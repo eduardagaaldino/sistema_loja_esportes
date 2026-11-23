@@ -1,81 +1,81 @@
-# import sqlite3
+import sqlite3
 
-# def cadastrar_produtos(nome_produto, marca_produto, preco_produto, estoque, banco):
-#     try:
-#         conexao = sqlite3.connect(banco)
-#         cursor = conexao.cursor()
+def cadastrar_produtos(nome_produto, marca_produto, preco_produto, estoque, banco):
+    try:
+        conexao = sqlite3.connect(banco)
+        cursor = conexao.cursor()
 
-#         cursor.execute(f'''INSERT INTO diretores
-#                         (nome_produto, marca_produto, preco_produto, estoque )
-#                         VALUES ('{nome_produto}', '{marca_produto}', '{preco_produto}', '{estoque}')''')
+        cursor.execute(f'''INSERT INTO diretores
+                        (nome_produto, marca_produto, preco_produto, estoque )
+                        VALUES ('{nome_produto}', '{marca_produto}', '{preco_produto}', '{estoque}')''')
 
-#         conexao.commit()
-#         conexao.close()
+        conexao.commit()
+        conexao.close()
 
-#         return("produto cadastrado com sucesso!")
+        return("produto cadastrado com sucesso!")
 
-#     except sqlite3.Error as erro:
-#         print(f"Erro ao cadastrar produto" , erro)
-
-
-# def listar_produtos(banco):
-#     try:
-#         conexao = sqlite3.connect(banco)
-#         cursor = conexao.cursor()
-
-#         cursor.execute("SELECT * FROM produtos")
-#         produtos = cursor.fetchall()
-
-#         conexao.close()
-
-#         print("\n--- PRODUTOS ---")
-
-#         if not produtos:
-#             print("Nenhum produto cadastrado.")
-#         else:
-#             for produto in produtos:
-#                 print(
-#                     f"ID: {produto[0]} | "
-#                     f"Nome: {produto[1]} | "
-#                     f"marca: {produto[2]} | "
-#                     f"preco: {produto[3]} | "
-#                     f"estoque: {produto[4]} |"
-#                 )
-
-#     except sqlite3.Error as erro:
-#         print(f"Erro ao listar produtos" , erro)
+    except sqlite3.Error as erro:
+        print(f"Erro ao cadastrar produto" , erro)
 
 
-# def atualizar_produtos(id_produto, novo_nome_produto, nova_marca_produto, novo_preco_produto, banco):
-#     try:
-#         conexao = sqlite3.connect(banco)
-#         cursor = conexao.cursor()
+def listar_produtos(banco):
+    try:
+        conexao = sqlite3.connect(banco)
+        cursor = conexao.cursor()
 
-#         sql = f'''
-#         UPDATE produtos
-#         SET nome_produto = '{novo_nome_produto}',
-#             marca_produto = '{nova_marca_produto}',
-#             preco_produto = '{novo_preco_produto}',
-#         WHERE id_produto = {id_produto}
-#         '''
+        cursor.execute("SELECT * FROM produtos")
+        produtos = cursor.fetchall()
 
-#         cursor.execute(sql)
+        conexao.close()
 
-#         conexao.commit()
+        print("\n--- PRODUTOS ---")
 
-#         if cursor.rowcount > 0:
-#             return("produto atualizado com sucesso!")
-#         else:
-#             return("Nenhuma produto foi encontrado com esse ID!")
+        if not produtos:
+            print("Nenhum produto cadastrado.")
+        else:
+            for produto in produtos:
+                print(
+                    f"ID: {produto[0]} | "
+                    f"Nome: {produto[1]} | "
+                    f"marca: {produto[2]} | "
+                    f"preco: {produto[3]} | "
+                    f"estoque: {produto[4]} |"
+                )
 
-#     except sqlite3.Error as erro:
-#         print(f"Erro no banco de dados!", erro)
+    except sqlite3.Error as erro:
+        print(f"Erro ao listar produtos" , erro)
 
-#     except ValueError:
-#         print("Erro: digite apenas numeros!") 
 
-#     finally:
-#         conexao.close()
+def atualizar_produtos(id_produto, novo_nome_produto, nova_marca_produto, novo_preco_produto, banco):
+    try:
+        conexao = sqlite3.connect(banco)
+        cursor = conexao.cursor()
+
+        sql = f'''
+        UPDATE produtos
+        SET nome_produto = '{novo_nome_produto}',
+            marca_produto = '{nova_marca_produto}',
+            preco_produto = '{novo_preco_produto}',
+        WHERE id_produto = {id_produto}
+        '''
+
+        cursor.execute(sql)
+
+        conexao.commit()
+
+        if cursor.rowcount > 0:
+            return("produto atualizado com sucesso!")
+        else:
+            return("Nenhuma produto foi encontrado com esse ID!")
+
+    except sqlite3.Error as erro:
+        print(f"Erro no banco de dados!", erro)
+
+    except ValueError:
+        print("Erro: digite apenas numeros!") 
+
+    finally:
+        conexao.close()
 
 def atualizar_estoque(id_produto, novo_estoque, banco, operacao):  #criar operacao entrada e saida
     try:
@@ -134,27 +134,27 @@ def vender (nome_produto, estoque, novo_estoque, venda, banco):
 
 
 
-# def excluir_diretores(id_produto, banco):
-#     try:
-#         conexao = sqlite3.connect(banco)
-#         cursor = conexao.cursor()
+def excluir_diretores(id_produto, banco):
+    try:
+        conexao = sqlite3.connect(banco)
+        cursor = conexao.cursor()
 
-#         cursor.execute(sql)
-#         conexao.commit()
+        cursor.execute(sql)
+        conexao.commit()
 
-#         if cursor.rowcount > 0:
-#             return "produto excluído com sucesso!"
-#         else:
-#             return "Nenhum produtor foi encontrado com esse ID."
+        if cursor.rowcount > 0:
+            return "produto excluído com sucesso!"
+        else:
+            return "Nenhum produtor foi encontrado com esse ID."
 
-#     except ValueError:
-#         print("Erro: digite apenas numeros!")
+    except ValueError:
+        print("Erro: digite apenas numeros!")
 
-#     except sqlite3.Error as erro:
-#         print(f"Erro no banco de dados!", erro)
+    except sqlite3.Error as erro:
+        print(f"Erro no banco de dados!", erro)
 
-#     finally:
-#         conexao.close()
+    finally:
+        conexao.close()
 
 
 def menu_produtos():
